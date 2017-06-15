@@ -11,7 +11,7 @@
 	display: table-header-group;
 }
 .divTableCell, .divTableHead {
-	border: 1px solid #999999;
+	border: 3px solid #999999;
 	display: table-cell;
 	padding: 3px 10px;
 }
@@ -32,4 +32,8 @@
 .divTableCell {
   cursor: cell;
   text-align: center;
+}
+
+h2 {
+  color: blue;
 }
