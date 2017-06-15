@@ -25,11 +25,10 @@ Game.prototype.getAllIndexes = function(arr, val) {
 }
 
 Game.prototype.doesItInclude = function(letterArray) {
-  console.log(letterArray);
-  if (letterArray.includes((0 && 1 && 2) || (3 && 4 && 5) || (6 && 7 && 8) || (0 && 3 && 6) || (1 && 4 && 7) || (2 && 5 && 8) || (0 && 4 && 8) || (0 && 4 && 8) || (2 && 4 && 6))) {
-    alert("You win");
-  };
-}
+  if ((letterArray.includes(0) && letterArray.includes(1) && letterArray.includes(2)) || (letterArray.includes(3) && letterArray.includes(4) && letterArray.includes(5)) || (letterArray.includes(6) && letterArray.includes(7) && letterArray.includes(8)) || (letterArray.includes(0) && letterArray.includes(3) && letterArray.includes(6)) || (letterArray.includes(1) && letterArray.includes(4) && letterArray.includes(7)) || (letterArray.includes(2) && letterArray.includes(5) && letterArray.includes(8)) || (letterArray.includes(0) && letterArray.includes(4) && letterArray.includes(8)) || (letterArray.includes(2) && letterArray.includes(4) && letterArray.includes(6))) {
+    alert("Winner!");
+  } 
+};
 
 //user interface:
 
@@ -46,26 +45,18 @@ var whosTurn = newGame.xTurn;
 
 //calculating a win logic:
 var finishedArray = [null, null, null, null, null, null, null, null, null];
-var allAnswers = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6]];
 
-allAnswers.forEach(function(answer) {
-  function containsAll(answer, xIndexes){
-  for(var i = 0 , len = needles.length; i < len; i++){
-     if($.inArray(answer[i], xIndexes) == -1) return false;
-  }
-  return true;
-}
-});
 
 // A CELL:
   $("#x0y0").click(function(event) {
     event.preventDefault();
-    if (finishedArray[0] === null) { // yes
-    if (whosTurn === true) { // yes
-    $("#x0y0").append("<h2>" + xCell + "</h2>"); // add 'x' to board
-    finishedArray[0] = xCell; //finishedArray = [x, null, null, etc.;]
-    var xIndexes = newGame.getAllIndexes(finishedArray, "X"); //xIndexes = [0]
+    if (finishedArray[0] === null) {
+    if (whosTurn === true) {
+    $("#x0y0").append("<h2>" + xCell + "</h2>");
+    finishedArray[0] = xCell;
+    var xIndexes = newGame.getAllIndexes(finishedArray, "X");
     newGame.doesItInclude(xIndexes);
+    console.log(xIndexes);
   } else {
     $("#x0y0").append("<h2>" + oCell + "</h2>");
     finishedArray[0] = oCell;
@@ -77,6 +68,7 @@ allAnswers.forEach(function(answer) {
     alert("This square is taken!");
   }
   });
+
 // B CELL:
   $("#x1y0").click(function(event) {
     event.preventDefault();
@@ -85,16 +77,19 @@ allAnswers.forEach(function(answer) {
     $("#x1y0").append("<h2>" + xCell + "</h2>");
     finishedArray[1] = xCell;
     var xIndexes = newGame.getAllIndexes(finishedArray, "X");
+    newGame.doesItInclude(xIndexes);
   } else {
     $("#x1y0").append("<h2>" + oCell + "</h2>");
     finishedArray[1] = oCell;
     var oIndexes = newGame.getAllIndexes(finishedArray, "O");
+    newGame.doesItInclude(oIndexes);
   };
       whosTurn = !whosTurn;
     } else {
       alert("This square is taken!");
     }
   });
+
 // C CELL:
   $("#x2y0").click(function(event) {
     event.preventDefault();
@@ -103,6 +98,7 @@ allAnswers.forEach(function(answer) {
     $("#x2y0").append("<h2>" + xCell + "</h2>");
     finishedArray[2] = xCell;
     var xIndexes = newGame.getAllIndexes(finishedArray, "X");
+    newGame.doesItInclude(xIndexes);
   } else {
     $("#x2y0").append("<h2>" + oCell + "</h2>");
     finishedArray[2] = oCell;
@@ -113,6 +109,7 @@ allAnswers.forEach(function(answer) {
     alert("This square is taken!");
   }
   });
+
 // D CELL:
   $("#x0y1").click(function(event) {
     event.preventDefault();
@@ -121,16 +118,19 @@ allAnswers.forEach(function(answer) {
     $("#x0y1").append("<h2>" + xCell + "</h2>");
     finishedArray[3] = xCell;
     var xIndexes = newGame.getAllIndexes(finishedArray, "X");
+    newGame.doesItInclude(xIndexes);
   } else {
     $("#x0y1").append("<h2>" + oCell + "</h2>");
     finishedArray[3] = oCell;
     var oIndexes = newGame.getAllIndexes(finishedArray, "O");
+    newGame.doesItInclude(oIndexes);
   };
     whosTurn = !whosTurn;
   } else {
     alert("This square is taken!");
   }
   });
+
 // E CELL:
   $("#x1y1").click(function(event) {
     event.preventDefault();
@@ -139,10 +139,12 @@ allAnswers.forEach(function(answer) {
     $("#x1y1").append("<h2>" + xCell + "</h2>");
     finishedArray[4] = xCell;
     var xIndexes = newGame.getAllIndexes(finishedArray, "X");
+    newGame.doesItInclude(xIndexes);
   } else {
     $("#x1y1").append("<h2>" + oCell + "</h2>");
     finishedArray[4] = oCell;
     var oIndexes = newGame.getAllIndexes(finishedArray, "O");
+    newGame.doesItInclude(oIndexes);
   };
     whosTurn = !whosTurn;
   } else {
@@ -158,10 +160,12 @@ allAnswers.forEach(function(answer) {
     $("#x2y1").append("<h2>" + xCell + "</h2>");
     finishedArray[5] = xCell;
     var xIndexes = newGame.getAllIndexes(finishedArray, "X");
+    newGame.doesItInclude(xIndexes);
   } else {
     $("#x2y1").append("<h2>" + oCell + "</h2>");
     finishedArray[5] = oCell;
     var oIndexes = newGame.getAllIndexes(finishedArray, "O");
+    newGame.doesItInclude(oIndexes);
   };
     whosTurn = !whosTurn;
   } else {
@@ -177,10 +181,12 @@ allAnswers.forEach(function(answer) {
     $("#x0y2").append("<h2>" + xCell + "</h2>");
     finishedArray[6] = xCell;
     var xIndexes = newGame.getAllIndexes(finishedArray, "X");
+    newGame.doesItInclude(xIndexes);
   } else {
     $("#x0y2").append("<h2>" + oCell + "</h2>");
     finishedArray[6] = oCell;
     var oIndexes = newGame.getAllIndexes(finishedArray, "O");
+    newGame.doesItInclude(oIndexes);
   };
     whosTurn = !whosTurn;
   } else {
@@ -196,10 +202,12 @@ allAnswers.forEach(function(answer) {
     $("#x1y2").append("<h2>" + xCell + "</h2>");
     finishedArray[7] = xCell;
     var xIndexes = newGame.getAllIndexes(finishedArray, "X");
+    newGame.doesItInclude(xIndexes);
   } else {
     $("#x1y2").append("<h2>" + oCell + "</h2>");
     finishedArray[7] = oCell;
     var oIndexes = newGame.getAllIndexes(finishedArray, "O");
+    newGame.doesItInclude(oIndexes);
   };
     whosTurn = !whosTurn;
   } else {
@@ -215,11 +223,12 @@ allAnswers.forEach(function(answer) {
     $("#x2y2").append("<h2>" + xCell + "</h2>");
     finishedArray[8] = xCell;
     var xIndexes = newGame.getAllIndexes(finishedArray, "X");
-    console.log(xIndexes);
+    newGame.doesItInclude(xIndexes);
   } else {
     $("#x2y2").append("<h2>" + oCell + "</h2>");
     finishedArray[8] = oCell;
     var oIndexes = newGame.getAllIndexes(finishedArray, "O");
+    newGame.doesItInclude(oIndexes);
   };
     whosTurn = !whosTurn;
   } else {
